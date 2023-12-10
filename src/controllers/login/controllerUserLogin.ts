@@ -7,13 +7,14 @@ const prisma = new PrismaClient();
 export class UserLogin {
 
     async login (req: Request, res: Response){
+
         const { name, password } = req.body;
 
         if (!name || !password) {
-          res.status(400).json({ message: "All the fields are required" });
-          return;
-          }
-
+            res.status(400).json({ message: "All the fields are required" });
+            return;
+            }
+            
           try {
            const user = await prisma.user.findFirst({
                 where: {
